@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 北陸玩雪完全攻略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f3f4f6; color: #334155; padding-top: 110px; -webkit-tap-highlight-color: transparent; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* 導航列 */
+        .top-nav-container { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding-bottom: 5px; }
+        .app-header { padding: 12px 16px 4px 16px; text-align: center; }
+        .scroll-nav { display: flex; overflow-x: auto; white-space: nowrap; padding: 0 16px; gap: 8px; padding-bottom: 8px; }
+        .nav-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 58px; padding: 6px 4px; border-radius: 12px; color: #94a3b8; font-size: 0.8rem; background: #f8fafc; border: 1px solid #f1f5f9; transition: all 0.2s; }
+        .nav-btn.active { background-color: #4f46e5; color: white; border-color: #4f46e5; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25); }
+        .nav-btn span.date { font-size: 0.65rem; margin-top: 2px; opacity: 0.9; }
+
+        /* 卡片 */
+        .card { background: white; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
+        .hero-img { width: 100%; height: 180px; object-fit: cover; }
+        .content-box { padding: 20px; }
+
+        /* 連結樣式 */
+        a.link { color: #2563eb; text-decoration: none; font-weight: 500; }
+        a.link:active { color: #1e40af; }
+        
+        /* 標題 */
+        .section-title { display: flex; align-items: center; font-weight: 700; color: #1e293b; font-size: 1rem; margin-top: 24px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px dashed #e2e8f0; }
+        .section-icon { margin-right: 8px; font-size: 1.2rem; }
+
+        /* Checkbox 列表 */
+        .check-item { display: flex; align-items: start; padding: 8px; border-radius: 8px; transition: background 0.1s; border-bottom: 1px solid #f1f5f9; }
+        .check-item:last-child { border-bottom: none; }
+        .check-item:active { background-color: #f8fafc; }
+        input[type="checkbox"] { margin-top: 4px; width: 1.1rem; height: 1.1rem; margin-right: 10px; flex-shrink: 0; accent-color: #4f46e5; }
+        
+        /* 標籤 */
+        .tag { padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; margin-right: 4px; display: inline-block; margin-bottom: 4px; background: #f1f5f9; color: #475569; }
+        .tag-brand { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body x-data="{ tab: 'day1' }">
+
+    <div class="top-nav-container">
+        <div class="app-header">
+            <h1 class="text-lg font-bold text-slate-800">☃️ 2026 北陸玩雪完全攻略</h1>
+        </div>
+        <div class="scroll-nav hide-scroll">
+            <div @click="tab = 'day1'" class="nav-btn" :class="{ 'active': tab === 'day1' }"><span>D1</span><span class="date">1/14</span></div>
+            <div @click="tab = 'day2'" class="nav-btn" :class="{ 'active': tab === 'day2' }"><span>D2</span><span class="date">1/15</span></div>
+            <div @click="tab = 'day3'" class="nav-btn" :class="{ 'active': tab === 'day3' }"><span>D3</span><span class="date">1/16</span></div>
+            <div @click="tab = 'day4'" class="nav-btn" :class="{ 'active': tab === 'day4' }"><span>D4</span><span class="date">1/17</span></div>
+            <div @click="tab = 'day5'" class="nav-btn" :class="{ 'active': tab === 'day5' }"><span>D5</span><span class="date">1/18</span></div>
+            <div @click="tab = 'day6'" class="nav-btn" :class="{ 'active': tab === 'day6' }"><span>D6</span><span class="date">1/19</span></div>
+            <div @click="tab = 'day7'" class="nav-btn" :class="{ 'active': tab === 'day7' }"><span>D7</span><span class="date">1/20</span></div>
+            <div class="w-[1px] h-8 bg-slate-200 mx-1"></div>
+            <div @click="tab = 'budget'" class="nav-btn" :class="{ 'active': tab === 'budget' }"><span>💰</span><span class="date">預算</span></div>
+            <div @click="tab = 'packing'" class="nav-btn" :class="{ 'active': tab === 'packing' }"><span>🧳</span><span class="date">行李</span></div>
+        </div>
+    </div>
+
+    <main class="px-4 pb-12">
+
+        <div x-show="tab === 'day1'" x-transition.opacity>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1617346332738-95844a2eb98b?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">抵達名古屋</h2>
+                    <p class="text-sm text-slate-500 mb-4">週三 01.14 ｜ 宿：<a href="https://www.google.com/maps/search/?api=1&query=Nikko+Style+Nagoya" target="_blank" class="link">Nikko Style Nagoya</a></p>
+
+                    <div class="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-900 mb-4">
+                        <p>✈️ <strong>15:35</strong> 抵達中部國際機場 (CX530)</p>
+                        <p>🚗 <strong>機場接送</strong> (08:45出發) 或 U-sky</p>
+                        <p>🏨 飯店 Check-in</p>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🛍️</span> 晚間購物 (營業至12點)</div>
+                    <ul class="text-sm space-y-2 mb-4">
+                        <li>📍 <a href="https://www.google.com/maps/search/?api=1&query=UNIQLO+Nagoya+Station" target="_blank" class="link">UNIQLO</a>：買發熱衣/輕羽絨</li>
+                        <li>📍 <a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Nagoya" target="_blank" class="link">唐吉訶德</a>：買玩雪裝備</li>
+                    </ul>
+
+                    <div class="section-title"><span class="section-icon">🍽️</span> 晚餐候選</div>
+                    <div class="text-sm text-slate-700">
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yabaton+Misokatsu" target="_blank" class="link flex-1">矢場丼 味增豬排</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yamamotoya+Souhonke" target="_blank" class="link flex-1">山本屋總本家 烏龍麵 (麵硬)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Jiraiya+Tenmusu" target="_blank" class="link flex-1">地雷也 炸蝦飯糰</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Torikai+Sohonke" target="_blank" class="link flex-1">鳥開總本家 親子丼</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Ekikama+Kishimen" target="_blank" class="link flex-1">驛釜棊子麵 (名古屋扁麵)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Atsuta+Houraiken+Sakae" target="_blank" class="link flex-1">熱田蓬萊軒 鰻魚飯 (榮商圈)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Menya+Shishimaru" target="_blank" class="link flex-1">麵家獅子丸 白湯拉麵</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Hida+Beef+Ittouya" target="_blank" class="link flex-1">飛驒牛一頭家 燒肉</a></label>
+                        
+                        <div class="mt-4 font-bold text-orange-600">🍰 甜點</div>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Cafe+gentiane+Nagoya" target="_blank" class="link flex-1">小雞布丁蛋糕 (需預約)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=HARBS+Nagoya" target="_blank" class="link flex-1">HARBS 蛋糕</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day2'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1571406323447-bc9707bb3363?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">自駕與水族館</h2>
+                    <p class="text-sm text-slate-500 mb-4">週四 01.15 ｜ 宿：Nikko Style Nagoya</p>
+
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm mb-2">🥐 早餐清單</h3>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <a href="https://www.google.com/maps/search/?api=1&query=KAKO+Coffee" target="_blank" class="tag bg-white border">KAKO咖啡</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Komeda+Coffee" target="_blank" class="tag bg-white border">客美多</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=KISSA+BLACK+COFFEE" target="_blank" class="tag bg-white border">KISSA BLACK</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Tsubame+Bread+%26+Milk" target="_blank" class="tag bg-white border">Tsubame Bread</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Yanagibashi+Central+Market" target="_blank" class="tag bg-white border">柳橋中央市場</a>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Toyota+Rent+a+Car+Nagoya+Station" target="_blank" class="block bg-blue-50 text-blue-900 px-4 py-3 rounded-xl text-sm font-bold mb-6 flex items-center hover:bg-blue-100">
+                        <span class="text-xl mr-2">🚗</span> 09:00 名古屋站前取車 (Toyota)
+                    </a>
+
+                    <div class="section-title"><span class="section-icon">🌟</span> 今日行程</div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-slate-800"><a href="https://www.google.com/maps/search/?api=1&query=Nagoya+Port+Aquarium" target="_blank" class="link">1. 名古屋港水族館</a> 🐬</h4>
+                            <p class="text-xs text-slate-500 mt-1">午餐：館內 TORTOISE (平價) 或 Arribada (景觀/較貴)</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800"><a href="https://www.google.com/maps/search/?api=1&query=Mitsui+Outlet+Park+Jazz+Dream+Nagashima" target="_blank" class="link">2. 爵士之夢長島 Outlet</a> 🛍️</h4>
+                            <p class="text-xs text-slate-500 mt-1">小孩行程：<a href="https://www.google.com/maps/search/?api=1&query=Nagoya+Anpanman+Children's+Museum" target="_blank" class="link">名古屋麵包超人博物館</a></p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800"><a href="https://www.google.com/maps/search/?api=1&query=Nabana+no+Sato" target="_blank" class="link">3. 名花之里 燈海</a> ✨</h4>
+                            <p class="text-xs text-slate-500 mt-1">晚餐：園區小吃或 Outlet 美食街</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🛒</span> 購物清單 (西松屋/唐吉訶德/Outlet)</div>
+                    <div class="bg-red-50 p-4 rounded-xl text-sm text-slate-700">
+                        <p class="font-bold text-red-800 mb-2">👶🏻 小孩裝備</p>
+                        <ul class="list-disc list-inside mb-3 space-y-1">
+                            <li>雪靴 (先去西松屋 或 唐吉訶德買)</li>
+                            <li>Montbell 童裝</li>
+                            <li>BEAMS 童裝</li>
+                            <li>衣服：GAP、THE NORTH FACE、POLO</li>
+                            <li>鞋子：Onitsuka Tiger、NB、NIKE</li>
+                        </ul>
+                        <p class="font-bold text-red-800 mb-2">👛 精品零錢包</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Bottega Veneta (BV)</li>
+                            <li>Saint Laurent (YSL)</li>
+                            <li>Jil Sander</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day3'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1545629685-64d8583a45c6?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">夢幻合掌村</h2>
+                    <p class="text-sm text-slate-500 mb-4">週五 01.16 ｜ 宿：<a href="https://www.google.com/maps/search/?api=1&query=Onyado+Yuinoshou" target="_blank" class="link">御宿 結の庄 ♨️</a></p>
+
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm mb-2">🥐 早餐清單</h3>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="tag">KAKO咖啡</span><span class="tag">客美多</span>
+                            <span class="tag">KISSA BLACK</span><span class="tag">Tsubame Bread</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl mb-6">
+                        <div class="section-title mt-0"><span class="section-icon">🚶</span> 散策路線</div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Shirakawago+Parking" target="_blank" class="link">停車場</a> ➔ 
+                            <a href="https://www.google.com/maps/search/?api=1&query=Three+Houses+Shirakawago" target="_blank" class="link">三個小屋</a> ➔ 
+                            <a href="https://www.google.com/maps/search/?api=1&query=Deai+Bridge" target="_blank" class="link">相逢橋</a> ➔ 
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kanda+House" target="_blank" class="link">神田家</a> / <a href="https://www.google.com/maps/search/?api=1&query=Wada+House" target="_blank" class="link">和田家</a> ➔ 
+                            <a href="https://www.google.com/maps/search/?api=1&query=Shiroyama+Observation+Deck" target="_blank" class="link font-bold text-red-600">城山展望台</a>
+                            <br><span class="text-xs text-slate-400">(接駁車最晚15:40 / 需零錢)</span>
+                        </p>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🍡</span> 合掌村午餐 & 小吃</div>
+                    <div class="text-sm text-slate-700">
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Shirakawago+Purin+no+Ie" target="_blank" class="link flex-1">布丁的家 (必吃!)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Okesa+Shirakawago" target="_blank" class="link flex-1">OKESA 飛驒牛壽司 (外帶)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Zensuke+Shirakawago" target="_blank" class="link flex-1">ぜん助 烤糰子/米餅</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Hida+Milk" target="_blank" class="link flex-1">飛驒牛乳</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yuinoshou+Croquette" target="_blank" class="link flex-1">結の鄉 可樂餅</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yamamotoya+Shirakawago" target="_blank" class="link flex-1">山本屋 蕎麥麵</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Irori+Shirakawago" target="_blank" class="link flex-1">鄉土料理 Irori</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Shiraogi+Soba" target="_blank" class="link flex-1">手打蕎麥麵 Shiraogi</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Kyoshu+Cafe+Shirakawago" target="_blank" class="link flex-1">鄉愁 咖啡甜點</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Tenshukaku+Observation+Deck+Cafe" target="_blank" class="link flex-1">天守閣展望台咖啡 (15:30關)</a></label>
+                        
+                        <div class="mt-4 font-bold text-orange-600">🎁 伴手禮</div>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Kondo+Shotten+Shirakawago" target="_blank" class="link flex-1">今藤商店 (買酒/仙貝)</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Kataribe+Shirakawago" target="_blank" class="link flex-1">合掌雞蛋糕 (Kataribe)</a></label>
+                        <label class="check-item"><input type="checkbox"> <span>合掌屋造型點心、豆菓子、焦糖爆米花</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day4'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1624869866898-3844db34057e?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">飛驒高山古街</h2>
+                    <p class="text-sm text-slate-500 mb-4">週六 01.17 ｜ 宿：<a href="https://www.google.com/maps/search/?api=1&query=Tokyu+Stay+Hida+Takayama" target="_blank" class="link">東急STAY飛驒高山</a></p>
+
+                    <div class="section-title"><span class="section-icon">👣</span> 散策路線</div>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex gap-3">
+                            <div class="bg-indigo-100 text-indigo-600 font-bold p-2 rounded w-14 text-center text-xs h-fit">AM</div>
+                            <div class="text-sm">
+                                <strong class="block"><a href="https://www.google.com/maps/search/?api=1&query=Hida+Folk+Village" target="_blank" class="link">飛驒之里</a></strong>
+                                <span class="text-slate-500 text-xs">合掌造建築博物館，人少好拍。</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="bg-indigo-100 text-indigo-600 font-bold p-2 rounded w-14 text-center text-xs h-fit">PM</div>
+                            <div class="text-sm space-y-2">
+                                <div><strong class="block"><a href="https://www.google.com/maps/search/?api=1&query=Takayama+Old+Town" target="_blank" class="link">高山老街 (三町通)</a></strong></div>
+                                <div><strong class="block"><a href="https://www.google.com/maps/search/?api=1&query=Harada+Sake+Brewery" target="_blank" class="link">原田酒造場</a></strong> (試喝清酒)</div>
+                                <div><strong class="block"><a href="https://www.google.com/maps/search/?api=1&query=Takayama+Jinya" target="_blank" class="link">高山陣屋</a></strong> (必去古蹟)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🍔</span> 午餐選擇</div>
+                    <div class="flex flex-wrap gap-2 text-sm">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Center4+Hamburgers" target="_blank" class="tag bg-white border">Center4 飛驒牛漢堡</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Jakson+Curry" target="_blank" class="tag bg-white border">弱尊 咖哩</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nakabashi+Sukiyaki" target="_blank" class="tag bg-white border">中橋 飛驒牛火鍋</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kakuya+Ramen" target="_blank" class="tag bg-white border">角や 拉麵</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hida+Takayama+Meat" target="_blank" class="tag bg-white border">飛驒高山MEAT 丼飯</a>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🥩</span> 晚餐：飛驒牛燒肉</div>
+                    <div class="space-y-3">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Ajikura+Tengoku" target="_blank" class="block bg-red-50 p-3 rounded-xl border border-red-100">
+                            <div class="flex justify-between items-center mb-1"><strong class="text-red-700">🔥 味藏天國</strong><span class="text-xs bg-red-200 text-red-800 px-2 py-1 rounded">No.1</span></div>
+                            <p class="text-xs text-red-600">建議開店前排隊。</p>
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Maruaki+Yakiniku" target="_blank" class="block bg-slate-50 p-3 rounded-xl"><strong class="text-slate-700">📍 丸明燒肉</strong></a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Gyusaku" target="_blank" class="block bg-slate-50 p-3 rounded-xl"><strong class="text-slate-700">📍 熟成飛驒牛 GYU-SAKU</strong> <span class="text-xs text-green-600">(可預約)</span></a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Shichirin+Yakiniku+Takayama" target="_blank" class="block bg-slate-50 p-3 rounded-xl"><strong class="text-slate-700">📍 七凜 (內臟燒肉/需開車)</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day5'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1518182170546-07661fd94144?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">牧歌之里玩雪</h2>
+                    <p class="text-sm text-slate-500 mb-4">週日 01.18 ｜ 宿：<a href="https://www.google.com/maps/search/?api=1&query=Mitsui+Garden+Hotel+Nagoya+Premier" target="_blank" class="link">三井花園飯店名古屋普米爾</a></p>
+
+                    <div class="section-title mt-0"><span class="section-icon">🌅</span> 上午行程</div>
+                    <div class="mb-4">
+                        <p class="text-sm">📍 <a href="https://www.google.com/maps/search/?api=1&query=Miyagawa+Morning+Market" target="_blank" class="link">宮川朝市</a> (視狀況前往)</p>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bokka+no+Sato" target="_blank" class="block bg-sky-50 p-4 rounded-xl border border-sky-100 mb-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">15:00 需離開</div>
+                        <h3 class="font-bold text-sky-900 mb-2 underline decoration-dashed">☃️ 牧歌之里 (玩雪!)</h3>
+                        <ul class="text-sm text-sky-800 list-disc list-inside space-y-1">
+                            <li>雪之輪胎 (30分 ¥300)</li>
+                            <li>雪上香蕉船 🍌</li>
+                            <li>體驗擠牛奶 🐄 / 看動物</li>
+                            <li>午餐：<span class="font-bold">牧歌燒肉</span></li>
+                        </ul>
+                    </a>
+
+                    <div class="section-title"><span class="section-icon">🏙️</span> 傍晚：回名古屋</div>
+                    <ul class="text-sm text-slate-600 space-y-3 mb-6">
+                        <li>🚗 <strong>17:00 還車</strong> (<a href="https://www.google.com/maps/search/?api=1&query=Toyota+Rent+a+Car+Nagoya+Station" target="_blank" class="link">名古屋站前</a>)</li>
+                        <li>🌃 <strong>夜景/逛街</strong>：<a href="https://www.google.com/maps/search/?api=1&query=Gate+Tower+Nagoya" target="_blank" class="link">Gate Tower</a> (Bic Camera)、<a href="https://www.google.com/maps/search/?api=1&query=Sky+Promenade" target="_blank" class="link">Sky Promenade</a>、<a href="https://www.google.com/maps/search/?api=1&query=Chubu+Electric+Power+Mirai+Tower" target="_blank" class="link">中部電力塔</a>、<a href="https://www.google.com/maps/search/?api=1&query=Oasis+21" target="_blank" class="link">綠洲21</a></li>
+                    </ul>
+
+                    <div class="section-title"><span class="section-icon">🍽️</span> 晚餐</div>
+                    <div class="text-sm text-slate-700">
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yabaton" target="_blank" class="link flex-1">矢場丼 味增豬排</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Yamamotoya" target="_blank" class="link flex-1">山本屋總本家 烏龍麵</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Jiraiya" target="_blank" class="link flex-1">地雷也 炸蝦飯糰</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Torikai" target="_blank" class="link flex-1">鳥開 親子丼</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Ekikama" target="_blank" class="link flex-1">驛釜棊子麵</a></label>
+                        <label class="check-item"><input type="checkbox"> <a href="https://www.google.com/maps/search/?api=1&query=Benzaiten+Daifuku" target="_blank" class="link flex-1"><strong>弁才天 大福</strong> (甜點)</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day6'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">市區巡禮 & 購物</h2>
+                    <p class="text-sm text-slate-500 mb-4">週一 01.19 ｜ 宿：三井花園飯店名古屋普米爾</p>
+
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm mb-2">🥐 早餐</h3>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Tsubame+Bread" target="_blank" class="tag bg-white">Tsubame Bread</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=DEVAN+COFFEE" target="_blank" class="tag bg-white">DEVAN COFFEE</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Konparu+Sunroad" target="_blank" class="tag bg-white">Konparu (炸蝦三明治)</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kissa+Ritchi" target="_blank" class="tag bg-white">Kissa Ritchi</a>
+                        </div>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">🧱</span> 白天：瘋狂購物</div>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <img src="https://images.unsplash.com/photo-1596545199203-333e38734606?auto=format&fit=crop&w=100&q=80" class="w-16 h-16 rounded object-cover flex-shrink-0">
+                            <div>
+                                <h3 class="font-bold text-slate-800"><a href="https://www.google.com/maps/search/?api=1&query=Noritake+Garden" target="_blank" class="link">則武森林</a> & <a href="https://www.google.com/maps/search/?api=1&query=Toyota+Commemorative+Museum" target="_blank" class="link">豐田博物館</a></h3>
+                                <p class="text-xs text-slate-500 mt-1">紅磚建築好拍，看復古車與紡織機 (需門票)。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-indigo-50 p-3 rounded-lg">
+                            <h3 class="font-bold text-indigo-900 text-sm mb-2">🛍️ 購物攻略</h3>
+                            <div class="mb-3">
+                                <strong class="block text-sm text-indigo-800"><a href="https://www.google.com/maps/search/?api=1&query=AEON+Mall+Nagoya+Noritake+Garden" target="_blank" class="link">1. AEON Mall 永旺夢樂城</a></strong>
+                                <ul class="list-disc list-inside text-xs text-slate-600 pl-2">
+                                    <li>BREEZE (童裝)</li>
+                                    <li>3coins (雜貨/旅行袋)</li>
+                                    <li>UNIQLO</li>
+                                    <li>午餐：AEON 餐廳</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong class="block text-sm text-indigo-800"><a href="https://www.google.com/maps/search/?api=1&query=mozo+wonder+city" target="_blank" class="link">2. mozo wonder city</a></strong>
+                                <ul class="list-disc list-inside text-xs text-slate-600 pl-2">
+                                    <li>petitmain (童裝)</li>
+                                    <li>markey’s (童裝)</li>
+                                    <li>MUJI 無印良品</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title"><span class="section-icon">✨</span> 晚上：榮商圈</div>
+                    <ul class="text-sm text-slate-600 space-y-2 mb-4">
+                        <li>📍 <a href="https://www.google.com/maps/search/?api=1&query=Mirai+Tower" target="_blank" class="link">中部電力塔</a>、<a href="https://www.google.com/maps/search/?api=1&query=Oasis+21" target="_blank" class="link">綠洲21</a></li>
+                        <li>🥘 晚餐：榮商圈餐廳</li>
+                        <li>🦐 買伴手禮：<a href="https://www.google.com/maps/search/?api=1&query=Keishindo+Shrimp+Crackers" target="_blank" class="link">桂新堂蝦餅</a> (三越/高島屋)</li>
+                        <li>💊 藥妝及超市補貨：營養品、調味料、洗面乳</li>
+                    </ul>
+
+                    <div class="bg-yellow-50 p-3 rounded-lg text-sm border border-yellow-200">
+                        <h4 class="font-bold text-yellow-800 mb-1">☔️ 雨備與其他備案</h4>
+                        <div class="flex flex-wrap gap-2 text-xs text-yellow-900">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Higashiyama+Zoo" target="_blank" class="underline">東山動植物園</a>、
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nagoya+Castle" target="_blank" class="underline">名古屋城</a>、
+                            <a href="https://www.google.com/maps/search/?api=1&query=Nagoya+City+Science+Museum" target="_blank" class="underline">科學館</a>+<a href="https://www.google.com/maps/search/?api=1&query=Osu+Shopping+District" target="_blank" class="underline">大須</a>、
+                            <a href="https://www.google.com/maps/search/?api=1&query=SCMAGLEV+and+Railway+Park" target="_blank" class="underline">磁浮鐵道館</a>、
+                            <a href="https://www.google.com/maps/search/?api=1&query=Atsuta+Jingu" target="_blank" class="underline">熱田神宮</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'day7'" x-transition.opacity style="display: none;">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" class="hero-img">
+                <div class="content-box">
+                    <h2 class="text-2xl font-bold mb-1">機場玩樂 & 回家</h2>
+                    <p class="text-sm text-slate-500 mb-4">週二 01.20 ｜ CX531 16:40 起飛</p>
+
+                    <div class="bg-gray-100 p-3 rounded-lg mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm mb-2">🥐 早餐</h3>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Tsubame+Bread" target="_blank" class="tag bg-white">Tsubame Bread</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=DEVAN+COFFEE" target="_blank" class="tag bg-white">DEVAN COFFEE</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Konparu" target="_blank" class="tag bg-white">Konparu</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kissa+Ritchi" target="_blank" class="tag bg-white">Kissa Ritchi</a>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=FLIGHT+OF+DREAMS" target="_blank" class="bg-indigo-50 p-4 rounded-xl mb-6 block hover:bg-indigo-100 border border-indigo-100">
+                        <h3 class="font-bold text-indigo-900 mb-2 underline decoration-dashed">✈️ FLIGHT OF DREAMS (點擊導航)</h3>
+                        <p class="text-sm text-indigo-800 mb-2">第二航廈波音博物館，展示首架 787 客機。</p>
+                        <ul class="text-xs text-indigo-600 list-disc list-inside">
+                            <li>兒童遊樂區 (Flight Park)</li>
+                            <li>午餐：Seattle Terrace (美式) 或 回航站4F</li>
+                        </ul>
+                    </a>
+
+                    <div class="section-title"><span class="section-icon">🛍️</span> 最後採買清單</div>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <div class="bg-orange-100 w-12 h-12 rounded flex items-center justify-center text-xl flex-shrink-0">🦐</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800"><a href="https://www.google.com/maps/search/?api=1&query=Ebisenbei+No+Sato+Chubu+Airport" target="_blank" class="link">蝦仙貝之里</a></h3>
+                                <p class="text-xs text-slate-500 mt-1">機場 4F (非免稅區)，各種口味試吃，必買！</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="bg-pink-100 w-12 h-12 rounded flex items-center justify-center text-xl flex-shrink-0">💄</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">免稅店衝刺</h3>
+                                <ul class="text-xs text-slate-500 mt-1 list-disc list-inside">
+                                    <li>Prada, Celine (零錢包)</li>
+                                    <li>肌膚之鑰 妝前乳*2 (送阿嬤的禮物)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-slate-800 text-white p-3 rounded-xl text-center text-sm">
+                        👋 14:30 第一航廈 Check-in ➔ 16:40 起飛
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'budget'" x-transition.opacity style="display: none;">
+            <div class="card p-5">
+                <h2 class="text-2xl font-bold mb-6 text-center">💰 詳細預算表</h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-bold text-slate-700 text-sm mb-2 border-l-4 border-indigo-500 pl-2">🏠 住宿費用</h3>
+                    <div class="overflow-x-auto border border-slate-100 rounded-lg">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 text-slate-500 text-xs">
+                                <tr><th class="p-3">日期</th><th class="p-3">費用(台幣)</th><th class="p-3">狀態</th></tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr><td class="p-3">1/14(三)</td><td class="p-3 font-mono">15,083</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">已扣</span></td></tr>
+                                <tr><td class="p-3">1/15(四)</td><td class="p-3 text-slate-400 text-xs">連住無扣款</td><td class="p-3">-</td></tr>
+                                <tr><td class="p-3">1/16(五)</td><td class="p-3 font-mono">28,974</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">已扣</span></td></tr>
+                                <tr><td class="p-3">1/17(六)</td><td class="p-3 font-mono">11,620</td><td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">已扣</span></td></tr>
+                                <tr><td class="p-3">1/18(日)</td><td class="p-3 font-mono">19,170</td><td class="p-3"><span class="bg-red-50 text-red-500 px-2 py-1 rounded text-xs">1/14扣</span></td></tr>
+                            </tbody>
+                            <tfoot class="bg-indigo-50">
+                                <tr><td colspan="3" class="p-3 text-right font-bold text-indigo-700">總計：NT$ 18,875 /人</td></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="font-bold text-slate-700 text-sm mb-2 border-l-4 border-blue-500 pl-2">🚗 租車 (Toyota Rent a Car)</h3>
+                    <div class="bg-slate-50 rounded-lg p-4 text-sm space-y-2">
+                        <div class="flex justify-between font-bold"><span>Alphard (雪胎/全險)</span><span class="text-lg">¥103,290</span></div>
+                        <p class="text-xs text-red-500 text-right font-bold mb-2">現場付款 (約NT$20,658)</p>
+                        <hr class="border-slate-200">
+                        <p class="text-xs text-slate-500">時間：1/15 09:00 - 1/18 17:00</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white border border-slate-100 rounded-lg p-3">
+                        <h4 class="font-bold text-slate-700 text-sm mb-2">🛜 網路 eSIM (DOCOMO)</h4>
+                        <div class="text-xs space-y-2">
+                            <div class="flex justify-between"><span>10G 7日</span><span class="font-mono font-bold">$259</span></div>
+                            <div class="flex justify-between"><span>吃到飽 7日</span><span class="font-mono font-bold">$439</span></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white border border-slate-100 rounded-lg p-3">
+                            <h4 class="font-bold text-slate-700 text-sm mb-2">🛡️ 保險</h4>
+                            <div class="text-xs space-y-1">
+                                <div class="flex justify-between"><span>大人</span><span>$974</span></div>
+                                <div class="flex justify-between"><span>小孩</span><span>$247</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-slate-100 rounded-lg p-3">
+                            <h4 class="font-bold text-slate-700 text-sm mb-2">🚌 其他交通</h4>
+                            <div class="text-xs space-y-1">
+                                <div class="flex justify-between"><span>機場接送</span><span>$4,200</span></div>
+                                <div class="flex justify-between"><span>U-sky</span><span>¥1,430</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="tab === 'packing'" x-transition.opacity style="display: none;">
+            
+            <div class="card p-5 border-t-4 border-pink-400">
+                <h2 class="text-xl font-bold text-pink-500 mb-4">👶🏻 寶寶 Check List</h2>
+                
+                <div class="mb-5">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">📦 托運行李</h3>
+                    <div class="text-sm text-slate-700 space-y-2">
+                        <label class="check-item"><input type="checkbox"> 衣服、褲子*3</label>
+                        <label class="check-item"><input type="checkbox"> 發熱衣、襪子*6</label>
+                        <label class="check-item"><input type="checkbox"> 圍巾、毛帽、手套</label>
+                        <label class="check-item"><input type="checkbox"> 外套*2 (羽絨/背心)</label>
+                        <label class="check-item"><input type="checkbox"> 睡衣、防踢被</label>
+                        <label class="check-item"><input type="checkbox"> 浴巾、沐浴乳、乳液、屁屁膏</label>
+                        <label class="check-item"><input type="checkbox"> 棉花棒、牙線、牙刷牙膏、指甲剪</label>
+                        <label class="check-item"><input type="checkbox"> 尿布*30、睡覺尿布*8</label>
+                        <label class="check-item"><input type="checkbox"> <strong class="text-pink-600">小豬枕、小被被、娃娃</strong></label>
+                        <label class="check-item"><input type="checkbox"> 食物剪刀、碗</label>
+                        <label class="check-item"><input type="checkbox"> 藥品(備用感冒藥、凡士林、針筒、OK繃、生理食鹽水、紫雲膏、益生菌)、體溫計</label>
+                        <label class="check-item"><input type="checkbox"> 玩具(巧虎書/梅西書)</label>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">🎒 隨身包</h3>
+                    <div class="text-sm text-slate-700 space-y-2">
+                        <label class="check-item"><input type="checkbox"> 保溫瓶、餐具、電風扇</label>
+                        <label class="check-item"><input type="checkbox"> 睡覺手機</label>
+                        <label class="check-item"><input type="checkbox"> 尿布*5、濕紙巾、洗手乳、乾洗手、酒精、裝液體的夾鏈袋</label>
+                        <label class="check-item"><input type="checkbox"> 口罩*7</label>
+                        <label class="check-item"><input type="checkbox"> 點心 (草莓乾/巧虎餅乾)</label>
+                        <label class="check-item"><input type="checkbox"> 機上玩具 (iPad/耳機/貼紙書/畫筆/車)</label>
+                        <label class="check-item"><input type="checkbox"> 兒童相機、太陽眼鏡</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-5 border-t-4 border-slate-500">
+                <h2 class="text-xl font-bold text-slate-600 mb-4">🙋🏻‍♀️ 大人 Check List</h2>
+
+                <div class="mb-5">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">📄 重要隨身</h3>
+                    <div class="text-sm text-slate-700 space-y-2">
+                        <label class="check-item"><input type="checkbox" class="accent-red-500"> <strong class="text-red-600">護照</strong></label>
+                        <label class="check-item"><input type="checkbox" class="accent-red-500"> <strong class="text-red-600">台灣駕照 + 日文譯本</strong></label>
+                        <label class="check-item"><input type="checkbox"> 信用卡、現金、交通卡</label>
+                        <label class="check-item"><input type="checkbox"> 住宿、租車紙本單據</label>
+                        <label class="check-item"><input type="checkbox"> 充電線、行動電源</label>
+                        <label class="check-item"><input type="checkbox"> 底片機、太陽眼鏡、口罩、保溫瓶</label>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">👔 托運行李</h3>
+                    <div class="text-sm text-slate-700 space-y-2">
+                        <label class="check-item"><input type="checkbox"> 發熱衣褲*2、襪子、內衣褲*6</label>
+                        <label class="check-item"><input type="checkbox"> 睡衣褲</label>
+                        <label class="check-item"><input type="checkbox"> 圍巾、毛帽、手套、靴子</label>
+                        <label class="check-item"><input type="checkbox"> 羽絨背心/外套</label>
+                        <label class="check-item"><input type="checkbox"> 化妝包、牙刷、保養品</label>
+                        <label class="check-item"><input type="checkbox"> 行李束帶、髒衣袋、雨傘</label>
+                        <label class="check-item"><input type="checkbox"> 常備藥品、口罩</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
